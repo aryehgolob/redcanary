@@ -2,7 +2,6 @@ require 'yaml'
 require 'os'
 require 'sys/proctable'
 require 'date'
-require 'awesome_print'
 require 'socket'
 require 'csv'
 require './telemetery_reporter.rb'
@@ -56,7 +55,13 @@ class RedCanaryTelemetryValidator
     current_process = ProcTable.ps(pid: current_pid)
     command_line = current_process[:cmdline]
     process_name = current_process[:comm]
-    start_time = current_process[:creation_date].to_s
+    if @target_os == "windows"
+      start_time = current_process[:creation_date].to_s
+    elsif @target_os == "linux"
+      start_time = current_process[:starttime].to_s
+    else
+      # unsupported OS
+    end
 
     network_info_list.each do |network_info_hash|
       url = network_info_hash['url']
@@ -76,10 +81,18 @@ class RedCanaryTelemetryValidator
 
   def validate_file_info(file_info_list)
     current_pid = Process.pid
+
     current_process = ProcTable.ps(pid: current_pid)
     command_line = current_process[:cmdline]
     process_name = current_process[:comm]
-    start_time = current_process[:creation_date].to_s
+    p "inspect file: "+current_process.inspect
+    if @target_os == "windows"
+      start_time = current_process[:creation_date].to_s
+    elsif @target_os == "linux"
+      start_time = current_process[:starttime].to_s
+    else
+      # unsupported OS
+    end
 
     file_info_list.each do |file_info_hash|
       # validate file creation
@@ -155,9 +168,19 @@ class RedCanaryTelemetryValidator
     process_exe_list.each do |process|
       pid = spawn(process)
       process = ProcTable.ps(pid: pid)
-      start_time = process[:creation_date].to_s
-      process_name = process[:cmdline]
-      exe_path = process[:executable_path]
+      p "process inspect: " + process.inspect+" pid: "+pid.to_s
+      if @target_os == "windows"
+        start_time = process[:creation_date].to_s
+        process_name = process[:cmdline]
+        exe_path = process[:executable_path]
+      elsif @target_os == "linux"	
+        start_time = process[:starttime].to_s
+        process_name = process[:cmdline]
+        exe_path = `which #{process_name}`
+	p "exe path: "+exe_path
+      else
+        # undetected operating system - throw an error
+      end
       @reporter.add_process_info(pid, process_name, start_time, exe_path, @user)
     end
 
