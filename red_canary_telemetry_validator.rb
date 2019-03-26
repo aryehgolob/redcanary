@@ -12,7 +12,7 @@ include Sys
 class RedCanaryTelemetryValidator
   def initialize
     @@config  = YAML.load_file('config.yaml')
-    puts @@config.inspect
+    #puts @@config.inspect
 
     @reporter = TelemeteryReporter.new
     @user = `whoami`.strip
@@ -85,7 +85,6 @@ class RedCanaryTelemetryValidator
     current_process = ProcTable.ps(pid: current_pid)
     command_line = current_process[:cmdline]
     process_name = current_process[:comm]
-    p "inspect file: "+current_process.inspect
     if @target_os == "windows"
       start_time = current_process[:creation_date].to_s
     elsif @target_os == "linux"
@@ -168,7 +167,6 @@ class RedCanaryTelemetryValidator
     process_exe_list.each do |process|
       pid = spawn(process)
       process = ProcTable.ps(pid: pid)
-      p "process inspect: " + process.inspect+" pid: "+pid.to_s
       if @target_os == "windows"
         start_time = process[:creation_date].to_s
         process_name = process[:cmdline]
@@ -177,7 +175,6 @@ class RedCanaryTelemetryValidator
         start_time = process[:starttime].to_s
         process_name = process[:cmdline]
         exe_path = `which #{process_name}`
-	p "exe path: "+exe_path
       else
         # undetected operating system - throw an error
       end
