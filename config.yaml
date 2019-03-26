@@ -4,7 +4,6 @@ windows:
     # windows process to measure
     process:        
         - process_name: cmd.exe 
-        - process_name: dir.exe 
         - process_name: notepad.exe 
     file: 
         - file_name: telemetry_test_1.tmp
