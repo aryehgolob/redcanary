@@ -27,7 +27,6 @@ windows:
 linux:
     # linux process to measure
     process:        
-        - process_name: cd
         - process_name: pwd
         - process_name: ls
     file: 
