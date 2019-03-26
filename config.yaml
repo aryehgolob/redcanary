@@ -1,0 +1,51 @@
+# Red Canary Telemetry Configuration
+
+windows:
+    # windows process to measure
+    process:        
+        - process_name: cmd.exe 
+        - process_name: dir.exe 
+        - process_name: notepad.exe 
+    file: 
+        - file_name: telemetry_test_1.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test1
+        - file_name: telemetry_test_2.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test2
+    network:
+        - url: google.com
+          port: 80
+          data: >
+              Send this data to Google
+        - url: yahoo.com
+          port: 80
+          data: >
+              Send this data to Yahoo
+
+linux:
+    # linux process to measure
+    process:        
+        - process_name: vi.exe 
+        - process_name: pwd.exe 
+        - process_name: ls.exe 
+    file: 
+        - file_name: telemetry_test_1.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test1
+        - file_name: telemetry_test_2.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test2
+    network:
+        - url: google.com
+          port: 80
+          data: >
+              Send this data to Google
+        - url: yahoo.com
+          port: 80
+          data: >
+              Send this data to Yahoo
