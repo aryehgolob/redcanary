@@ -27,9 +27,9 @@ windows:
 linux:
     # linux process to measure
     process:        
-        - process_name: vi.exe 
-        - process_name: pwd.exe 
-        - process_name: ls.exe 
+        - process_name: cd
+        - process_name: pwd
+        - process_name: ls
     file: 
         - file_name: telemetry_test_1.tmp
           text: >
