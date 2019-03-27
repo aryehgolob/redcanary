@@ -3,7 +3,7 @@ class TelemeteryReporter
 
   ProcessInfo = Struct.new(:pid, :process_name, :start_time, :exe_path, :user)
   FileInfo = Struct.new(:status, :pid, :file_path, :activity_descriptor, :process_name, :command_line, :start_time, :user)
-  NetworkInfo = Struct.new(:pid, :source_addr, :source_port, :dest_addr, :dest_port, :file_path, :process_name, :command_line, :start_time, :data_size, :user)
+  NetworkInfo = Struct.new(:pid, :source_addr, :source_port, :dest_addr, :dest_port, :data_size, :process_name, :command_line, :start_time, :user, :protocol)
 
   def initialize
     @process_info_list = Array.new
@@ -21,8 +21,9 @@ class TelemeteryReporter
     @file_info_list.push(file_info)
   end
 
-  def add_network_info(pid, source_addr, source_port, dest_addr, dest_port, process_name, command_line, start_time, data_size, user)
-    network_info = NetworkInfo.new(pid, source_addr, source_port, dest_addr, dest_port, process_name, command_line, start_time, data_size, user)
+  def add_network_info(pid, source_addr, source_port, dest_addr, dest_port, data_size, process_name, command_line, start_time, user)
+    network_info = NetworkInfo.new(pid, source_addr, source_port, dest_addr, dest_port, data_size, process_name, command_line, start_time, user, "TCP")
+    p "a user: " + user
     @network_info_list.push(network_info)
   end
 end

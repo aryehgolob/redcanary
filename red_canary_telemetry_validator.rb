@@ -4,6 +4,7 @@ require 'sys/proctable'
 require 'date'
 require 'socket'
 require 'csv'
+require 'json'
 require './telemetery_reporter.rb'
 
 
@@ -12,10 +13,12 @@ include Sys
 class RedCanaryTelemetryValidator
   def initialize
     @@config  = YAML.load_file('config.yaml')
-    #puts @@config.inspect
+    puts @@config.inspect
 
     @reporter = TelemeteryReporter.new
     @user = `whoami`.strip
+    @output_mode = @@config['output_mode']
+    p "output_mode: " + @output_mode
 
     if OS.windows?
       @target_os = "windows"
@@ -67,14 +70,14 @@ class RedCanaryTelemetryValidator
       url = network_info_hash['url']
       port = network_info_hash['port']
       data = network_info_hash['data']
-      size = data.bytesize
+      data_size = data.bytesize
 
       sock = TCPSocket.new(url,port)
       source_ip = sock.local_address.ip_address
       source_port = sock.local_address.ip_port
       sock.write(data)
 
-      @reporter.add_network_info(current_pid, source_ip, source_port, url, port, process_name, command_line, start_time, size, @user)
+      @reporter.add_network_info(current_pid, source_ip, source_port, url, port, data_size, process_name, command_line, start_time, @user)
     end
 
   end
@@ -184,6 +187,82 @@ class RedCanaryTelemetryValidator
   end
 
   def generate_report
+    if @output_mode == "csv"
+      generate_csv()
+    elsif @output_mode == "json"
+      generate_json()
+    end
+  end
+
+  def generate_json
+    time = Time.new
+    date_stamp = time.month.to_s+time.year.to_s+time.day.to_s+time.hour.to_s+time.min.to_s+time.sec.to_s
+    output_file_name = "telemetry_report."+date_stamp+".json"
+
+    File.open(output_file_name, 'w')
+
+    metric_array = Array.new
+
+    process_info_array = Array.new
+    metric_array << process_info_array
+    process_info_list = @reporter.process_info_list
+    process_info_list.each do |process_info|
+      pid = process_info.pid
+      process_name = process_info.process_name
+      start_time = process_info.start_time
+      exe_path = process_info.exe_path
+      user = process_info.user
+      stats_hash = ["pid" => pid, "process_name" => process_name, "start_time" => start_time, "exe_path" => exe_path, "user" => user]
+      process_info_array << stats_hash
+    end
+
+    file_info_array = Array.new
+    metric_array << file_info_array
+    file_info_list = @reporter.file_info_list
+    file_info_list.each do |file_info|
+      status = file_info.status
+      pid = file_info.pid
+      file_path = file_info.file_path
+      activity_descriptor = file_info.activity_descriptor
+      process_name = file_info.process_name
+      command_line = file_info.command_line
+      start_time = file_info.start_time
+      user = file_info.user
+      stats_hash = ["status" => status, "pid," => pid, "file_path" => file_path, "activity_descriptor" => activity_descriptor,
+                    "process_name" => process_name, "command_line" => command_line, "start_time" => start_time, "user" => user]
+      file_info_array << stats_hash
+    end
+
+
+    network_info_array = Array.new
+    metric_array << network_info_array
+    network_info_list = @reporter.network_info_list
+    network_info_list.each do |network_info|
+      pid = network_info.pid
+      source_addr = network_info.source_addr
+      source_port = network_info.source_port
+      dest_addr = network_info.dest_addr
+      dest_port = network_info.dest_port
+      process_name = network_info.process_name
+      command_line = network_info.command_line
+      start_time = network_info.start_time
+      data_size = network_info.data_size.to_s
+      user = network_info.user
+      protocol = network_info.protocol
+      p "network info: "+network_info.inspect
+      stats_hash = ["pid" => pid, "source_addr" => source_addr, "source_port" => source_port, "dest_addr" => dest_addr,
+                    "dest_port" => dest_port, "data_size" => data_size, "process_name" => process_name,
+                    "command_line" => command_line, "start_time" => start_time, "user" => user, "protocol" => protocol]
+      network_info_array << stats_hash
+    end
+
+    p metric_array.to_json
+
+    end
+
+  end
+
+  def generate_csv
     time = Time.new
     date_stamp = time.month.to_s+time.year.to_s+time.day.to_s+time.hour.to_s+time.min.to_s+time.sec.to_s
     
@@ -225,7 +304,7 @@ class RedCanaryTelemetryValidator
     CSV.open(network_file_name, "w",
              :write_headers=>true,
                          :headers => ["Process ID", "Source Address", "Source Port", "Destination Address",
-                                      "Destination Port", "Process Name", "Process Command Line", "Start Time", "Data Size (bytes)", "User"]) do |csv|
+                                      "Destination Port", "Data Size", "Process Name", "Command Line", "Start Time", "User", "Protocol"]) do |csv|
       network_info_list = @reporter.network_info_list
       network_info_list.each do |network_info|
         pid = network_info.pid
@@ -233,18 +312,18 @@ class RedCanaryTelemetryValidator
         source_port = network_info.source_port
         dest_addr = network_info.dest_addr
         dest_port = network_info.dest_port
-        file_path = network_info.file_path
         process_name = network_info.process_name
         command_line = network_info.command_line
         start_time = network_info.start_time
         data_size = network_info.data_size.to_s
         user = network_info.user
+        protocol = network_info.protocol
 
-        csv << [pid, source_addr, source_port, dest_addr, dest_port, file_path, process_name, command_line, start_time, data_size, user]
+        csv << [pid, source_addr, source_port, dest_addr, dest_port, data_size, process_name, command_line, start_time, user, protocol]
       end
     end
   end
-end
+
 
 # create telemetry validator
 validator = RedCanaryTelemetryValidator.new
