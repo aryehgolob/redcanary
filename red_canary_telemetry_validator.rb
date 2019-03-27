@@ -13,12 +13,11 @@ include Sys
 class RedCanaryTelemetryValidator
   def initialize
     @@config  = YAML.load_file('config.yaml')
-    puts @@config.inspect
+    #puts @@config.inspect
 
     @reporter = TelemeteryReporter.new
     @user = `whoami`.strip
     @output_mode = @@config['output_mode']
-    p "output_mode: " + @output_mode
 
     if OS.windows?
       @target_os = "windows"
@@ -249,7 +248,6 @@ class RedCanaryTelemetryValidator
       data_size = network_info.data_size.to_s
       user = network_info.user
       protocol = network_info.protocol
-      p "network info: "+network_info.inspect
       stats_hash = ["pid" => pid, "source_addr" => source_addr, "source_port" => source_port, "dest_addr" => dest_addr,
                     "dest_port" => dest_port, "data_size" => data_size, "process_name" => process_name,
                     "command_line" => command_line, "start_time" => start_time, "user" => user, "protocol" => protocol]

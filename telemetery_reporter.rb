@@ -23,7 +23,6 @@ class TelemeteryReporter
 
   def add_network_info(pid, source_addr, source_port, dest_addr, dest_port, data_size, process_name, command_line, start_time, user)
     network_info = NetworkInfo.new(pid, source_addr, source_port, dest_addr, dest_port, data_size, process_name, command_line, start_time, user, "TCP")
-    p "a user: " + user
     @network_info_list.push(network_info)
   end
 end
