@@ -81,6 +81,30 @@ linux:
           port: 80
           data: >
               Send this data to Yahoo
+              #
+# linux telemetery definitions
+mac:
+    process:        
+        - process_name: pwd
+        - process_name: ls
+    file: 
+        - file_name: telemetry_test_1.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test1
+        - file_name: telemetry_test_2.tmp
+          text: >
+              Red Canary telementery test file.
+              File modify - test2
+    network:
+        - url: google.com
+          port: 80
+          data: >
+              Send this data to Google
+        - url: yahoo.com
+          port: 80
+          data: >
+              Send this data to Yahoo
 ```
 
 **CSV Output Files**
