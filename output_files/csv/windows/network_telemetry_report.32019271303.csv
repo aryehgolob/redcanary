@@ -1,0 +1,3 @@
+Process ID,Source Address,Source Port,Destination Address,Destination Port,Data Size,Process Name,Command Line,Start Time,User,Protocol
+19632,10.40.60.90,58605,google.com,80,25,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-27T13:00:02-02:40,desktop-5eb3brj\aryeh,TCP
+19632,10.40.60.90,58606,yahoo.com,80,24,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-27T13:00:02-02:40,desktop-5eb3brj\aryeh,TCP
