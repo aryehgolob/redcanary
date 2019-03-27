@@ -1,0 +1,3 @@
+Process ID,Source Address,Source Port,Destination Address,Destination Port,Data Size,Process Name,Command Line,Start Time,User,Protocol
+11638,10.0.2.15,37378,google.com,80,25,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root,TCP
+11638,10.0.2.15,42237,yahoo.com,80,24,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root,TCP
