@@ -79,8 +79,9 @@ linux:
               Send this data to Yahoo
 ```
 
-* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/windows)
-* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/linux)
+**CSV File**
+* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/windows)
+* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/linux)
 
 
 
