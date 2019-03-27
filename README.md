@@ -12,7 +12,7 @@ As I would imagine, in a real life scenario we may want to validate certain core
 
 The following YAML file which has been validated against the two hosts mentioned above (windows local host, trusty64 ubuntu vm).
 
-Using the configuration file noted below, the following sequence of events will occur when the core RedCanaryTelemetryValidator class is kicked off.
+Using the configuration file noted below, the following sequence of events will occur when the core ```RedCanaryTelemetryValidator``` class is kicked off.
 
 When run on a windows host
 
