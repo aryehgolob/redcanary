@@ -8,9 +8,7 @@ The approach I have taken to this project is to create a generic framework to pr
 
 All of this functionality is controlled through config.yaml file (see below) which has been validated on my local Windows 10 machine as well as the following virtual image: https://app.vagrantup.com/ubuntu/boxes/trusty64
 
-As I would imagine, in a real life scenario we may want to validate certain core processes on particular operating systems in various scenario's.
-
-For this project, I have decided to make the number of individual telemetry metrics for all three categories (process, file, network) unlimited.  That is to say, by simply editing the config file and using that as our source definition file, we can easily tweak as we hit real life scenario's.
+As I would imagine, in a real life scenario we may want to validate certain core processes on particular operating systems under various scenario's and will almost certainly want to kick off more than one process, file validation or network telemetry instance while inspecting a host.  With this in mind, I have made the number of configurable telemetry metric items unlimited. 
 
 The following YAML file which has been validated against the two hosts mentioned above (windows local host, trusty64 ubuntu vm).
 
