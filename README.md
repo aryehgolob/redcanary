@@ -30,8 +30,12 @@ When run on a windows host
 ```javascript
 # Red Canary Telemetry Configuration
 
+# output mode (csv/json)
+output_mode: json
+
+
+# windows telemetery definitions
 windows:
-    # windows process to measure
     process:        
         - process_name: cmd.exe 
         - process_name: powershell.exe
@@ -54,8 +58,8 @@ windows:
           data: >
               Send this data to Yahoo
 
+# linux telemetery definitions
 linux:
-    # linux process to measure
     process:        
         - process_name: pwd
         - process_name: ls
@@ -79,8 +83,13 @@ linux:
               Send this data to Yahoo
 ```
 
-* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/windows)
-* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/linux)
+**CSV Output Files**
+* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/windows)
+* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/linux)
 
+
+**JSON Output Files**
+* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/json/windows)
+* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/json/linux)
 
 
