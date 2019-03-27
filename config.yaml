@@ -1,7 +1,7 @@
 # Red Canary Telemetry Configuration
 
 # output mode (csv/json)
-output_mode: csv
+output_mode: json
 
 
 # windows telemetery definitions

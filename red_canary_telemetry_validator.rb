@@ -199,7 +199,7 @@ class RedCanaryTelemetryValidator
     date_stamp = time.month.to_s+time.year.to_s+time.day.to_s+time.hour.to_s+time.min.to_s+time.sec.to_s
     output_file_name = "telemetry_report."+date_stamp+".json"
 
-    File.open(output_file_name, 'w')
+    output_file = File.open(output_file_name, 'w')
 
     metric_array = Array.new
 
@@ -256,7 +256,7 @@ class RedCanaryTelemetryValidator
       network_info_array << stats_hash
     end
 
-    p metric_array.to_json
+    output_file.write(metric_array.to_json)
 
     end
 
