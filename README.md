@@ -79,4 +79,4 @@ linux:
               Send this data to Yahoo
 ```
 
-[Windows Output Files](./output_files/windows)
+[Windows Output Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/windows)
