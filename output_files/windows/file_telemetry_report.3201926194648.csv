@@ -1,0 +1,7 @@
+Status,Process ID,File Path,Activity,Process Name,Process Command Line,Start Time,User
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp,create file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp,modify file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp,delete file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp,create file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp,modify file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
+pass,11076,C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp,delete file,ruby.exe,C:\Ruby26-x64\bin\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb,2019-03-26T19:46:47-02:40,desktop-5eb3brj\aryeh
