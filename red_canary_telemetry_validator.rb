@@ -23,6 +23,8 @@ class RedCanaryTelemetryValidator
       @target_os = "windows"
     elsif OS.linux?
       @target_os = "linux"
+    elsif OS.mac?
+      @target_os = "mac"
     else
       @target_os = "undetermined"
     end
@@ -47,6 +49,9 @@ class RedCanaryTelemetryValidator
     elsif @target_os == "linux"
       network_info_list = @@config['linux']['network']
       validate_network_info(network_info_list)
+    elsif @target_os == "mac"
+      network_info_list = @@config['mac']['network']
+      validate_network_info(network_info_list)
     else
       # undetected operating system - throw an error
     end
@@ -61,6 +66,8 @@ class RedCanaryTelemetryValidator
       start_time = current_process[:creation_date].to_s
     elsif @target_os == "linux"
       start_time = current_process[:starttime].to_s
+    elsif @target_os == "mac"
+      start_time = current_process[:start_tvusec].to_s
     else
       # unsupported OS
     end
@@ -91,6 +98,8 @@ class RedCanaryTelemetryValidator
       start_time = current_process[:creation_date].to_s
     elsif @target_os == "linux"
       start_time = current_process[:starttime].to_s
+    elsif @target_os == "mac"
+      start_time = current_process[:start_tvusec].to_s
     else
       # unsupported OS
     end
@@ -141,6 +150,9 @@ class RedCanaryTelemetryValidator
     elsif @target_os == "linux"
       file_info_list = @@config['linux']['file']
       validate_file_info(file_info_list)
+    elsif @target_os == "mac"
+      file_info_list = @@config['mac']['file']
+      validate_file_info(file_info_list)
     else
       # undetected operating system - throw an error
     end
@@ -153,6 +165,9 @@ class RedCanaryTelemetryValidator
       validate_process_list(process_list)
     elsif @target_os == "linux"
       process_list = @@config['linux']['process']
+      validate_process_list(process_list)
+    elsif @target_os == "mac"
+      process_list = @@config['mac']['process']
       validate_process_list(process_list)
     else
       # undetected operating system - throw an error
@@ -175,6 +190,10 @@ class RedCanaryTelemetryValidator
         exe_path = process[:executable_path]
       elsif @target_os == "linux"	
         start_time = process[:starttime].to_s
+        process_name = process[:cmdline]
+        exe_path = `which #{process_name}`
+      elsif @target_os == "mac"
+        start_time = process[:start_tvusec].to_s
         process_name = process[:cmdline]
         exe_path = `which #{process_name}`
       else
