@@ -6,7 +6,7 @@ The approach I have taken to this project is to create a generic framework to pr
 * File Metrics
 * Network Metrics
 
-All of this functionality is controlled through the following config.yaml file which has been validated on my local Windows 10 machine as well as the following virtual image: https://app.vagrantup.com/ubuntu/boxes/trusty64
+All of this functionality is controlled through config.yaml file (see below) which has been validated on my local Windows 10 machine as well as the following virtual image: https://app.vagrantup.com/ubuntu/boxes/trusty64
 
 As I would imagine, in a real life scenario we may want to validate certain core processes on particular operating systems in various scenario's.
 
