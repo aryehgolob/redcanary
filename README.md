@@ -25,7 +25,7 @@ When run on a windows host
 * open a tcp connection to the url/port list identified in configuration data
 * send the data mapped to tcp connection in configuration file
 * gather tcp metrics for connection
-* report results in time-series sequenced csv files
+* report results in time-series sequenced csv files or a single json file
 
 ```javascript
 # Red Canary Telemetry Configuration
