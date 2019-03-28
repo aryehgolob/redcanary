@@ -230,7 +230,7 @@ class RedCanaryTelemetryValidator
       start_time = process_info.start_time
       exe_path = process_info.exe_path
       user = process_info.user
-      stats_hash = ["pid" => pid, "process_name" => process_name, "start_time" => start_time, "exe_path" => exe_path, "user" => user]
+      stats_hash = ["metric_type" => "process_validate", "pid" => pid, "process_name" => process_name, "start_time" => start_time, "exe_path" => exe_path, "user" => user]
       process_info_array << stats_hash
     end
 
@@ -246,7 +246,7 @@ class RedCanaryTelemetryValidator
       command_line = file_info.command_line
       start_time = file_info.start_time
       user = file_info.user
-      stats_hash = ["status" => status, "pid," => pid, "file_path" => file_path, "activity_descriptor" => activity_descriptor,
+      stats_hash = ["metric_type" => "file_validate", "status" => status, "pid," => pid, "file_path" => file_path, "activity_descriptor" => activity_descriptor,
                     "process_name" => process_name, "command_line" => command_line, "start_time" => start_time, "user" => user]
       file_info_array << stats_hash
     end
@@ -267,7 +267,7 @@ class RedCanaryTelemetryValidator
       data_size = network_info.data_size.to_s
       user = network_info.user
       protocol = network_info.protocol
-      stats_hash = ["pid" => pid, "source_addr" => source_addr, "source_port" => source_port, "dest_addr" => dest_addr,
+      stats_hash = ["metric_type" => "network_validate", "pid" => pid, "source_addr" => source_addr, "source_port" => source_port, "dest_addr" => dest_addr,
                     "dest_port" => dest_port, "data_size" => data_size, "process_name" => process_name,
                     "command_line" => command_line, "start_time" => start_time, "user" => user, "protocol" => protocol]
       network_info_array << stats_hash
