@@ -273,7 +273,7 @@ class RedCanaryTelemetryValidator
       network_info_array << stats_hash
     end
 
-    output_file.write(metric_array.to_json)
+    output_file.write(metric_array.flatten.to_json)
 
     end
 
