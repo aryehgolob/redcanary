@@ -107,7 +107,7 @@ mac:
               Send this data to Yahoo
 ```
 
-**Sample Output
+**Sample Output**
 ```
 [
     {
