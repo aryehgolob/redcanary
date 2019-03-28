@@ -1,7 +1,0 @@
-Status,Process ID,File Path,Activity,Process Name,Process Command Line,Start Time,User
-pass,11638,/home/vagrant/redcanary/telemetry_test_1.tmp,create file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
-pass,11638,/home/vagrant/redcanary/telemetry_test_1.tmp,modify file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
-pass,11638,/home/vagrant/redcanary/telemetry_test_1.tmp,delete file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
-pass,11638,/home/vagrant/redcanary/telemetry_test_2.tmp,create file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
-pass,11638,/home/vagrant/redcanary/telemetry_test_2.tmp,modify file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
-pass,11638,/home/vagrant/redcanary/telemetry_test_2.tmp,delete file,ruby2.6,ruby2.6 red_canary_telemetry_validator.rb,6819011,root
