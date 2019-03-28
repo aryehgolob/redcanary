@@ -81,7 +81,7 @@ linux:
           port: 80
           data: >
               Send this data to Yahoo
-              #
+              
 # linux telemetery definitions
 mac:
     process:        
@@ -107,13 +107,121 @@ mac:
               Send this data to Yahoo
 ```
 
-**CSV Output Files**
-* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/windows)
-* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/csv/linux)
+**Sample Output**
+```
+[
+    {
+        "exe_path": "C:\\Windows\\system32\\cmd.exe",
+        "metric_type": "process_validate",
+        "pid": 4488,
+        "process_name": "cmd.exe",
+        "start_time": "2019-03-28T07:40:42-02:40",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "exe_path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "metric_type": "process_validate",
+        "pid": 2984,
+        "process_name": "powershell.exe",
+        "start_time": "2019-03-28T07:40:42-02:40",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "create file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "modify file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "delete file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_1.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "create file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "modify file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "activity_descriptor": "delete file",
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "file_path": "C:/Users/aryeh/RubymineProjects/redcanary/telemetry_test_2.tmp",
+        "metric_type": "file_validate",
+        "pid,": 7816,
+        "process_name": "ruby.exe",
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "status": "pass",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "data_size": "25",
+        "dest_addr": "google.com",
+        "dest_port": 80,
+        "metric_type": "network_validate",
+        "pid": 7816,
+        "process_name": "ruby.exe",
+        "protocol": "TCP",
+        "source_addr": "10.40.60.90",
+        "source_port": 49444,
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "user": "desktop-5eb3brj\\aryeh"
+    },
+    {
+        "command_line": "C:\\Ruby26-x64\\bin\\ruby.exe C:/Users/aryeh/RubymineProjects/redcanary/red_canary_telemetry_validator.rb",
+        "data_size": "24",
+        "dest_addr": "yahoo.com",
+        "dest_port": 80,
+        "metric_type": "network_validate",
+        "pid": 7816,
+        "process_name": "ruby.exe",
+        "protocol": "TCP",
+        "source_addr": "10.40.60.90",
+        "source_port": 49445,
+        "start_time": "2019-03-28T07:40:41-02:40",
+        "user": "desktop-5eb3brj\\aryeh"
+    }
+]
 
-
-**JSON Output Files**
-* [Windows Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/json/windows)
-* [Linux Telemetry Files](https://github.com/aryehgolob/redcanary/tree/master/output_files/json/linux)
+```
 
 
