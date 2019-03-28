@@ -81,7 +81,7 @@ linux:
           port: 80
           data: >
               Send this data to Yahoo
-              #
+              
 # linux telemetery definitions
 mac:
     process:        
