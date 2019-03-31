@@ -6,6 +6,8 @@ git clone https://github.com/aryehgolob/redcanary.git
 cd redcanary
 mvn install
 mvn exec:java -Dexec.mainClass="com.redcanary.tools.telemetry.TelemetryValidator"
+
+#telemetry_report.<timestamp>.json file created
 ```
 
 
