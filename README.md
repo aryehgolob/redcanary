@@ -100,3 +100,126 @@ telemetry_validator.thread_count=10
 </telemetry_definition>
 ```
 
+#### Sample Output
+```
+[
+    {
+        "activity_descriptor": "create",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\tmp2\\redcanary\\file1.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "status": "pass",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "activity_descriptor": "modify",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\tmp2\\redcanary\\file1.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "status": "pass",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "activity_descriptor": "delete",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\tmp2\\redcanary\\file1.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "activity_descriptor": "create",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\file2.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "status": "pass",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "activity_descriptor": "modify",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\file2.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "status": "pass",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "activity_descriptor": "delete",
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "element_type": "file_validate",
+        "file_name": "C:\\dev\\redcanary\\file2.txt",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "command_line": "C:\\Windows\\System32\\ipconfig.exe",
+        "element_type": "process_validate",
+        "pid": 18868,
+        "process_name": "ipconfig /all",
+        "start_time": "2019-03-31T23:32:39.639Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "command_line": "C:\\Windows\\System32\\notepad.exe",
+        "element_type": "process_validate",
+        "pid": 2272,
+        "process_name": "notepad ",
+        "start_time": "2019-03-31T23:32:39.630Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "command_line": "C:\\Windows\\System32\\calc.exe",
+        "element_type": "process_validate",
+        "pid": 6072,
+        "process_name": "calc ",
+        "start_time": "2019-03-31T23:32:39.643Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "data_size": 24,
+        "destination_ip": "10.40.60.90",
+        "destination_port": 80,
+        "element_type": "network_validate",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "protocol": "TCP",
+        "source_ip": "10.40.60.90",
+        "source_port": 57775,
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    },
+    {
+        "command_line": "C:\\Program Files\\Java\\jdk-12\\bin\\java.exe",
+        "data_size": 23,
+        "destination_ip": "10.40.60.90",
+        "destination_port": 80,
+        "element_type": "network_validate",
+        "pid": 14764,
+        "process_name": "java.exe",
+        "protocol": "TCP",
+        "source_ip": "10.40.60.90",
+        "source_port": 57776,
+        "start_time": "2019-03-31T23:32:38.002Z",
+        "user": "DESKTOP-5EB3BRJ\\aryeh"
+    }
+]
+```
+
+
