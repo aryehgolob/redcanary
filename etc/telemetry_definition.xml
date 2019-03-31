@@ -52,5 +52,28 @@
    </platform>
 
    <platform os="mac">
+       <metric_element_group type="file">
+           <file name="file1.txt">
+		<text>write this text to file</text>
+           </file>
+           <file name="file2.txt">
+		<text random="true" size_bytes="4000"/>
+           </file>
+       </metric_element_group>
+
+       <metric_element_group type="process">
+           <process name="pwd"/>
+           <process name="ls" args="-altr"/>
+	   <process name="cd" args="/"/>
+       </metric_element_group>
+
+       <metric_element_group type="network">
+           <network_connection ip="google.com" port="80">
+		<data>Send this data to google</data>
+	   </network_connection>
+           <network_connection ip="yahoo.com" port="80">
+		<data>Send this data to yahoo</data>
+	   </network_connection>
+       </metric_element_group>
    </platform>
 </telemetry_definition>
