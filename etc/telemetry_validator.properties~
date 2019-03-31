@@ -1,5 +1,0 @@
-# mode
-telemetry_validator.mode=run_telemetry_report
-
-# thread count
-telemetry_validator.thread_count=10
