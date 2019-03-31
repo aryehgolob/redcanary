@@ -1,4 +1,4 @@
-# Red Canary Telemetry Validator
+### Red Canary Telemetry Validator
 
 * Running
 > mvn install
