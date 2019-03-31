@@ -1,6 +1,6 @@
 ### Red Canary Telemetry Validator
 
-#### Running
+#### Running (JAVA_VERSION >= 9 required)
 ```
 git clone https://github.com/aryehgolob/redcanary.git
 mvn install
