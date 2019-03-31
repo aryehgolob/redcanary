@@ -29,10 +29,8 @@ public class ProcessMetric extends GenericMetric {
 	
 	public Boolean call() {
         ProcessBuilder pb = new ProcessBuilder(this.procName, this.procArgs);
-        //pb.environment().putAll(System.getenv());
         
         try {
-			//log.debug("env: "+pb.environment());
 			Process proc = pb.start();
 			this.pid = proc.pid();
 			procInfo = proc.info();
@@ -53,7 +51,6 @@ public class ProcessMetric extends GenericMetric {
 		jsonObj.put("process_name", procName+" "+procArgs);
 		jsonObj.put("command_line", ProcessUtil.stripOptional(procInfo.command().toString()));
 		jsonObj.put("element_type", "process_validate");
-		//log.debug("json: "+jsonObj.toString());
 		return jsonObj.toString();
 	}
 }

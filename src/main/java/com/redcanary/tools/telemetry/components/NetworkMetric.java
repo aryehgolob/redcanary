@@ -6,7 +6,6 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.redcanary.tools.etc.ProcessUtil;
@@ -45,9 +44,7 @@ public class NetworkMetric extends GenericMetric {
 			out.flush();
 			out.close();
 
-
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return true;
@@ -69,7 +66,6 @@ public class NetworkMetric extends GenericMetric {
 		jsonObj.put("data_size", dataSize);
 		jsonObj.put("protocol", "TCP");
 		jsonObj.put("element_type", "network_validate");
-		//log.debug("json: "+jsonObj.toString());
 		return jsonObj.toString();
 	}
 }

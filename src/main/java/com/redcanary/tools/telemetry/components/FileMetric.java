@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.redcanary.tools.etc.FileUtil;
@@ -35,14 +34,9 @@ public class FileMetric extends GenericMetric {
 		this.pid = ProcessUtil.getPid();
 		String fileName = this.getFileName();
 		this.fqFileName = FileUtil.getFullyQualifiedName(fileName);
-		//log.debug(fqFileName);
 		this.createSuccess = FileUtil.createFile(fileName);
 		this.modifySuccess = FileUtil.canModifyFile(fileName, content);
 		this.deleteSuccess = FileUtil.deleteFile(fileName);
-
-		//log.debug("createSuccess: "+createSuccess);
-		//log.debug("modifySuccess: "+modifySuccess);
-		//log.debug("deleteSuccess: "+deleteSuccess);
 		return true;
 	}
 	
@@ -63,14 +57,10 @@ public class FileMetric extends GenericMetric {
 		commonMap.put("user", ProcessUtil.stripOptional(procInfo.user().toString()));
 		String commandLine = ProcessUtil.stripOptional(procInfo.command().toString());
 		String procName = commandLine.substring(commandLine.lastIndexOf("\\") + 1);
-		//log.debug("procName: "+procName);
 		commonMap.put("command_line", commandLine);
 		commonMap.put("process_name", procName);
 		commonMap.put("file_name", fqFileName);
 		commonMap.put("element_type", "file_validate");
-
-
-		//log.debug("command_line: "+procInfo.command());
 
 		JSONObject createObj = new JSONObject();
 		JSONObject modifyObj = new JSONObject();

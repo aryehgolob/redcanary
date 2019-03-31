@@ -46,7 +46,6 @@ public class TelemetryDefinitionXml {
             List<Element> platformList = rootNode.getChildren("platform");
             for(Element platformElem : platformList) {
             	String os = platformElem.getAttributeValue("os");
-            	log.debug("os: "+os);
             	if(!os.equals(TelemetryValidator.OPERATING_SYSTEM)) {
             		continue;
             	}
@@ -77,8 +76,6 @@ public class TelemetryDefinitionXml {
 							
 							fileMetric.setContent(content);
 							
-							//log.debug("content: "+content);
-							//log.debug("fileName: "+fileName+" dir: "+fileDir);
 							metricList.add(fileMetric);
             			}
             		}
