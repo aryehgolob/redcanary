@@ -19,7 +19,19 @@ Notice 2 things about this class ...
 * ```GenericMetric implements Callable```
 * The following absract method ```public abstract String toJson();```
 
-Regarding ```implements Callable``` this simply indicates that the inherting classes will be run through Java's executor framework for multi-threading.
+Regarding ```implements Callable``` this simply indicates that the inherting classes will be run through Java's executor framework for multi-threading.  If you will look in ```TelemetryProber``` class, you will see that we are passing GenericMetric objects to the executor framework.
+
+```
+List<GenericMetric> metricList = this.definition.getMetricList();
+....
+
+for(GenericMetric metric : metricList) {
+	Future<Boolean> future = executor.submit(metric);
+	futureList.add(future);
+}
+```
+
+
 
 
 
