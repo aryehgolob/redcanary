@@ -58,7 +58,7 @@ public class TelemetryValidator {
 			OPERATING_SYSTEM = "windows";
 		}
 		else if(os.matches("mac.*")) {
-			OPERATING_SYSTEM = "windows";
+			OPERATING_SYSTEM = "mac";
 		}
 		else if(os.matches("linux.*")) {
 			OPERATING_SYSTEM = "linux";
