@@ -39,6 +39,15 @@ Regarding the output, notice again the abstract method in GenericMetric ...
 public abstract String toJson();
 ```
 
+If you will look at ```TelemetryProber``` in the ```generateReport()``` method, I am first getting a list of GenericMetric's and calling the polymorphic ```toJson()``` method.
+
+```
+List<GenericMetric> metricList = this.definition.getMetricList();
+
+String json = metricList.get(i).toJson();
+```
+
+
 
 
 #### Running (JAVA_VERSION >= 9 required)
