@@ -2,7 +2,7 @@
 
 #### Architecture Discussion
 
-The Red Canary Telemetry Validator is a fully functional encapsulated framework intent on probing telemetry metrics on a host and reporting back in any format necessary.  For this project the result is a simple JSON array with nested hashes representing the individual properties, but the output format may be extended easily do to the OO nature of the application.
+The Red Canary Telemetry Validator is a fully functional encapsulated framework intent on probing telemetry metrics on a host and reporting back in any format necessary.  For this project the result is a simple JSON array with nested hashes representing the individual properties, but the output format may be extended easily due to the OO nature of the application.
 
 As I wanted to be able to support as many as many potential "metrics" as possible, I will point you to the class ```GenericMetric``` which looks like this.
 
