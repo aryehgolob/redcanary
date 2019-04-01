@@ -1,5 +1,28 @@
 ### Red Canary Telemetry Validator
 
+#### Architecture Discussion
+
+The Red Canary Telemetry Validator is a fully functional encapsulated framework intent on probing telemetry metrics on a host and reporting back in any format necessary.  For this project the result is a simple JSON array with nested hashes representing the individual properties.
+
+As I wanted to be able to support as many as many potential "metrics" as possible, I will point you to the class ```GenericMetric``` which looks like this.
+
+```
+public abstract class GenericMetric implements Callable {
+	private static Logger log = Logger.getLogger(GenericMetric.class);
+
+	public abstract String toJson();
+}
+```
+
+Notice 2 things about this class ...
+
+* ```GenericMetric implements Callable```
+* The following absract method ```public abstract String toJson();```
+
+Regarding ```implements Callable``` this simply indicates that the inherting classes will be run through Java's executor framework for multi-threading.
+
+
+
 #### Running (JAVA_VERSION >= 9 required)
 ```
 git clone https://github.com/aryehgolob/redcanary.git
