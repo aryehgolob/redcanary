@@ -43,6 +43,8 @@ If you will look at ```TelemetryProber``` in the ```generateReport()``` method, 
 
 ```
 List<GenericMetric> metricList = this.definition.getMetricList();
+....
+
 
 String json = metricList.get(i).toJson();
 ```
