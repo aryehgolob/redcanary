@@ -28,16 +28,18 @@ public class TelemetryValidator {
 	private void init() {
 		InputStream input = null;
 
+		// initialize properties file
 		try {
+			// load propeties
 			Properties prop = new Properties();
-
 			input = new FileInputStream(CONFIG_FILE);
-
-			// load a properties file
 			prop.load(input);
 
+			// define instance variables
 			this.mode = prop.getProperty("telemetry_validator.mode");
 			this.threadCount = Integer.parseInt(prop.getProperty("telemetry_validator.thread_count"));
+			
+			// print mode to log
 			log.debug("mode: "+mode);
 		} 
 		catch (IOException ex) {
@@ -53,6 +55,7 @@ public class TelemetryValidator {
 			}
 		}
 		
+		// detect OS and define macro
 		String os = System.getProperty("os.name").toLowerCase();
 		if(os.matches("win.*")) {
 			OPERATING_SYSTEM = "windows";
@@ -67,17 +70,26 @@ public class TelemetryValidator {
 	}
 
 	public static void main(String[] args) {
+		// set up logging
 		BasicConfigurator.configure();
         log.debug("Red Canary Telemetry Validator ...");
 
+        // create application and kick off
         TelemetryValidator validator = new TelemetryValidator();
         validator.validateTelemetry();
 	}
 	
 	private void validateTelemetry() {
+		// get an object representation of XML configuration file
 		TelemetryDefinitionXml definition = new TelemetryDefinitionXml(VALIDATE_CONFIG_XML);
+		
+		// create a prober to probe metrics
 		TelemetryProber prober = new TelemetryProber(definition, this.threadCount);
+		
+		// probe metrics
 		prober.probeMetrics();
+		
+		// generate report
 		prober.generateReport();
 
 	}
