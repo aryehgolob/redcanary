@@ -11,6 +11,9 @@ import org.apache.log4j.Logger;
 public class FileUtil {
 	private static Logger log = Logger.getLogger(FileUtil.class);
 
+    /*
+     * Generic File methods            				
+     */
 	public static boolean createFile(String fileName) {
 		try {
 			File file = new File(fileName);
