@@ -64,7 +64,7 @@ public class NetworkMetric extends GenericMetric {
 		jsonObj.put("command_line", commandLine);
 		jsonObj.put("source_ip", srcIp);
 		jsonObj.put("source_port", srcPort);
-		jsonObj.put("destination_ip", srcIp);
+		jsonObj.put("destination_ip", destIp);
 		jsonObj.put("destination_port", destPort);
 		jsonObj.put("data_size", dataSize);
 		jsonObj.put("protocol", "TCP");
