@@ -12,11 +12,14 @@ import com.redcanary.tools.telemetry.components.TelemetryProber;
 import com.redcanary.tools.telemetry.xml.TelemetryDefinitionXml;
 
 public class TelemetryValidator {
+	// logger
 	private static Logger log = Logger.getLogger(TelemetryValidator.class);
 	
+	// macro's
 	private static final String CONFIG_FILE = "etc/telemetry_validator.properties";
 	private static final String VALIDATE_CONFIG_XML = "etc/telemetry_definition.xml";
 	
+	// class and instance variable
 	private String mode = null;
 	private int threadCount = -1;
 	public static String OPERATING_SYSTEM = null;
