@@ -64,6 +64,12 @@ Metric instances are parsed according to their type (network, process, file) but
 
 ```
 private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
+...
+metricList.add(fileMetric);
+...
+metricList.add(procMetric);
+...
+metricList.add(netMetric);
 ```
 
 ##### Some features
