@@ -80,7 +80,7 @@ Notice that for a file instance, we can pass in some optional parameters.
 <text random="true" size_bytes="4000"/>
 ```
 
-**If the data we are writing is unimportant, it "should" be random.**
+*If the data we are writing is unimportant, it "should" be random.*
 
 * Args parameter for processes
 ```
