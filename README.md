@@ -1,5 +1,92 @@
 ### Red Canary Telemetry Validator
 
+#### Architecture Discussion
+
+The Red Canary Telemetry Validator is a fully functional encapsulated framework intent on probing telemetry metrics on a host and reporting back in any format necessary.  For this project the result is a simple JSON array with nested hashes representing the individual properties, but the output format may be extended easily do to the OO nature of the application.
+
+As I wanted to be able to support as many as many potential "metrics" as possible, I will point you to the class ```GenericMetric``` which looks like this.
+
+```
+public abstract class GenericMetric implements Callable {
+	private static Logger log = Logger.getLogger(GenericMetric.class);
+
+	public abstract String toJson();
+}
+```
+
+Notice 2 things about this class ...
+
+* ```GenericMetric implements Callable```
+* The following absract method ```public abstract String toJson();```
+
+Regarding ```implements Callable``` this simply indicates that the inherting classes will be run through Java's executor framework for multi-threading.  If you will look in ```TelemetryProber``` class, you will see that we are passing GenericMetric objects to the executor framework.
+
+```
+List<GenericMetric> metricList = this.definition.getMetricList();
+....
+
+for(GenericMetric metric : metricList) {
+	Future<Boolean> future = executor.submit(metric);
+	futureList.add(future);
+}
+```
+
+Through the magic of polymorphism, the indivdual GenericMetrics are executed at runtime as their constituent classes (FileMetric, ProcessMetric, NetworkMetric). 
+
+Regarding the output, notice again the abstract method in GenericMetric ...
+
+```
+public abstract String toJson();
+```
+
+If you will look at ```TelemetryProber``` in the ```generateReport()``` method, I am first getting a list of GenericMetric's and calling the polymorphic ```toJson()``` method.
+
+```
+List<GenericMetric> metricList = this.definition.getMetricList();
+....
+
+
+String json = metricList.get(i).toJson();
+```
+
+With regard to initialization of metric settings, see ```TelemetryDefinitionXml```
+
+Telemetric settings are only parsed for the OS detected.
+
+```
+if(!os.equals(TelemetryValidator.OPERATING_SYSTEM)) {
+      // pass over XML config section of OS does not match
+      continue;
+}
+```
+
+Metric instances are parsed according to their type (network, process, file) but stored in a list of ```GenericMetric```'s
+
+```
+private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
+```
+
+##### Some features
+
+* Optional: "dir" attribute for file to write to specific directory
+```
+<file dir="C:/dev/redcanary" name="file2.txt">
+```
+
+* Optional: generate fixed size random data instead of pre-defined data
+```
+<text random="true" size_bytes="4000"/>
+```
+
+*If the data we are writing is unimportant, it "should" be random.*
+
+* Optional: args parameter for processes
+```
+<process name="ls" args="-altr"/>
+```
+
+
+
 #### Running (JAVA_VERSION >= 9 required)
 ```
 git clone https://github.com/aryehgolob/redcanary.git
