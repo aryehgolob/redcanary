@@ -68,8 +68,6 @@ private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
 
 ##### Some features
 
-Notice that for a file instance, we can pass in some optional parameters.
-
 * Optional: "dir" attribute for file to write to specific directory
 ```
 <file dir="C:/dev/redcanary" name="file2.txt">
