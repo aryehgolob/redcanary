@@ -66,6 +66,41 @@ Metric instances are parsed according to their type (network, process, file) but
 private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
 ```
 
+##### Some features
+
+File elemements ....
+```
+       <metric_element_group type="file">
+           <file name="file1.txt">
+		<text>write this text to file</text>
+           </file>
+           <file dir="C:/dev/redcanary" name="file2.txt">
+		<text random="true" size_bytes="4000"/>
+           </file>
+       </metric_element_group>
+
+```
+
+Notice that for a file instance, we can pass in some optional parameters.
+
+* Optional "dir" attribute
+```
+<file dir="C:/dev/redcanary" name="file2.txt">
+```
+
+* Generate fixed size random data
+```
+<text random="true" size_bytes="4000"/>
+```
+
+If the data we are writing is unimportant, it "should" be random.
+
+* Args parameter for processes
+```
+<text random="true" size_bytes="4000"/>
+```
+
+
 
 #### Running (JAVA_VERSION >= 9 required)
 ```
