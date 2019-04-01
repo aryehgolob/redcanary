@@ -68,19 +68,6 @@ private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
 
 ##### Some features
 
-File elemements ....
-```
-       <metric_element_group type="file">
-           <file name="file1.txt">
-		<text>write this text to file</text>
-           </file>
-           <file dir="C:/dev/redcanary" name="file2.txt">
-		<text random="true" size_bytes="4000"/>
-           </file>
-       </metric_element_group>
-
-```
-
 Notice that for a file instance, we can pass in some optional parameters.
 
 * Optional "dir" attribute
