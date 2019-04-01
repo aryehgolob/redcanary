@@ -13,6 +13,7 @@ import com.redcanary.tools.etc.ProcessUtil;
 public class NetworkMetric extends GenericMetric {
 	private static Logger log = Logger.getLogger(NetworkMetric.class);
 
+	// define instance variables
 	private String srcIp = null;
 	private int srcPort = -1;
 	private String destIp = null;
@@ -23,6 +24,7 @@ public class NetworkMetric extends GenericMetric {
 	private long pid = -1;
 
 
+	// constructor
 	public NetworkMetric(String ip, String port, String data) {
 		this.destIp = ip;
 		this.destPort = Integer.parseInt(port);
@@ -30,6 +32,7 @@ public class NetworkMetric extends GenericMetric {
 		this.dataSize = data.getBytes().length;
 	}
 
+	// run in thread and set results
 	public Boolean call() {
 		this.procInfo = ProcessUtil.getProcessInfo();
 		this.pid = ProcessUtil.getPid();

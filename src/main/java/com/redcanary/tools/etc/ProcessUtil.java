@@ -4,6 +4,10 @@ import org.apache.log4j.Logger;
 
 public class ProcessUtil {
 	private static Logger log = Logger.getLogger(ProcessUtil.class);
+
+    /*
+     * Generic Process methods            				
+     */
 	
 	public static ProcessHandle.Info getProcessInfo() {
 		ProcessHandle pHandle = ProcessHandle.current();

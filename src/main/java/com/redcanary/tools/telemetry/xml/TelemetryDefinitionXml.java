@@ -56,6 +56,7 @@ public class TelemetryDefinitionXml {
             		//log.debug("metricType: "+metricType);
             		
             		if(metricType.equals("file")) {
+            			// create file element instances
             			List<Element> fileList = metricGroupElem.getChildren("file");
             			for(Element fileElem : fileList) {
 							String fileName = fileElem.getAttributeValue("name");
@@ -68,23 +69,29 @@ public class TelemetryDefinitionXml {
 							
 							String content = null;
 							if(random != null && random.toLowerCase().equals("true")) {
+								// generate random text
 								content = StringUtil.generateRandomString(numberOfBytes);
 							}
 							else {
+								// use predefined text
 								content = textElem.getTextTrim();
 							}
 							
 							fileMetric.setContent(content);
 							
+							// add metric to GenericMetric list
 							metricList.add(fileMetric);
             			}
             		}
             		else if(metricType.equals("process")) {
+            			// create process element instances
             			List<Element> procList = metricGroupElem.getChildren("process");
             			for(Element procElem : procList) {
             				String procName = procElem.getAttributeValue("name");
             				String procArgs = procElem.getAttributeValue("args");
             				ProcessMetric procMetric = new ProcessMetric(procName, procArgs);
+
+							// add metric to GenericMetric list
 							metricList.add(procMetric);
             			}
             		}
@@ -95,6 +102,8 @@ public class TelemetryDefinitionXml {
             				String port = netElem.getAttributeValue("port");
             				String data = netElem.getChildTextTrim("data");
             				NetworkMetric netMetric = new NetworkMetric(ip, port, data);
+            				
+							// add metric to GenericMetric list
 							metricList.add(netMetric);
             			}
 

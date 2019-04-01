@@ -27,6 +27,7 @@ public class ProcessMetric extends GenericMetric {
 		}
 	}
 	
+	// run in thread and set results
 	public Boolean call() {
         ProcessBuilder pb = new ProcessBuilder(this.procName, this.procArgs);
         

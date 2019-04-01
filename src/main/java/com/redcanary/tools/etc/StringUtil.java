@@ -1,6 +1,10 @@
 package com.redcanary.tools.etc;
 
 import java.nio.charset.Charset;
+
+    /*
+     * Generic String methods            				
+     */
 import java.util.Random;
 
 public class StringUtil {

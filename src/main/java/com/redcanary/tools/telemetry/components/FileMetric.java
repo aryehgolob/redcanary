@@ -13,6 +13,7 @@ import com.redcanary.tools.etc.ProcessUtil;
 public class FileMetric extends GenericMetric {
 	private static Logger log = Logger.getLogger(FileMetric.class);
 
+	// define instance variables
 	private String fileName = null;
 	private String fileDir = null;
 	private boolean createSuccess = false;
@@ -29,6 +30,7 @@ public class FileMetric extends GenericMetric {
 		this.fileDir = fileDir;
 	}
 
+	// run in thread and set results
 	public Boolean call() {
 		this.procInfo = ProcessUtil.getProcessInfo();
 		this.pid = ProcessUtil.getPid();
