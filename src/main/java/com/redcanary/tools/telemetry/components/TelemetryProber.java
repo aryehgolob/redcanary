@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 public class TelemetryProber {
 	private static Logger log = Logger.getLogger(TelemetryProber.class);
 	
+	// define instance variables
 	private TelemetryDefinitionXml definition = null;
 	private ExecutorService executor = null;
 	
@@ -26,15 +27,19 @@ public class TelemetryProber {
 	}
 
 	public void probeMetrics() {
+		// get a list of all defined metrics
 		List<GenericMetric> metricList = this.definition.getMetricList();
 		
+		// get future results
 		List<Future<Boolean>> futureList = new ArrayList<Future<Boolean>>();
 		
+		// execute each individual metric instance telemetry collection in it's own thread
 		for(GenericMetric metric : metricList) {
 			Future<Boolean> future = executor.submit(metric);
 			futureList.add(future);
 		}
 
+		// wait to complete and shutdown
 		boolean isComplete = false;
 		while(!isComplete) {
 		    for(Future<Boolean> future : futureList) {
@@ -53,13 +58,16 @@ public class TelemetryProber {
 		executor.shutdown();
 	}
 
+
 	public void generateReport() {
+		// create file
 		String timeStamp = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
 		String fileName = "telemetry_report." + timeStamp + ".json";
 		if(!FileUtil.fileExists(fileName)) {
 			FileUtil.createFile(fileName);
 		}
 
+		// iterate through metrics, and build json output string
 		List<GenericMetric> metricList = this.definition.getMetricList();
 		StringBuffer sb = new StringBuffer("[");
 		int stopIndex = metricList.size() - 1;
@@ -72,6 +80,7 @@ public class TelemetryProber {
 		}
 		sb.append("]");
 		
+		// append output to file
 		FileUtil.appendToFile(fileName, sb.toString());
 	}
 }
