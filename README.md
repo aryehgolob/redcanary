@@ -49,7 +49,16 @@ List<GenericMetric> metricList = this.definition.getMetricList();
 String json = metricList.get(i).toJson();
 ```
 
+With regard to initialization of metric settings, see ```TelemetryDefinitionXml```
 
+Telemetric settings are only parsed for the OS detected.
+
+```
+if(!os.equals(TelemetryValidator.OPERATING_SYSTEM)) {
+      // pass over XML config section of OS does not match
+      continue;
+}
+```
 
 
 #### Running (JAVA_VERSION >= 9 required)
