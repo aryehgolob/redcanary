@@ -60,7 +60,7 @@ if(!os.equals(TelemetryValidator.OPERATING_SYSTEM)) {
 }
 ```
 
-Metric instances are parsed according to their type (network, process, file) but stored in a list of ````GenericMetric```'s
+Metric instances are parsed according to their type (network, process, file) but stored in a list of ```GenericMetric```'s
 
 ```
 private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
