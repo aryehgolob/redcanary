@@ -33,7 +33,11 @@ for(GenericMetric metric : metricList) {
 
 Through the magic of polymorphism, the indivdual GenericMetrics are executed at runtime as their constituent classes (FileMetric, ProcessMetric, NetworkMetric). 
 
+Regarding the output, notice again the abstract method in GenericMetric ...
 
+```
+public abstract String toJson();
+```
 
 
 
