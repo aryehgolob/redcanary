@@ -31,6 +31,8 @@ for(GenericMetric metric : metricList) {
 }
 ```
 
+Through the magic of polymorphism, the indivdual GenericMetrics are executed at runtime as their constituent classes (FileMetric, ProcessMetric, NetworkMetric). 
+
 
 
 
