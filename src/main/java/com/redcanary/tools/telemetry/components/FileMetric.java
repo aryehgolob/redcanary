@@ -52,7 +52,10 @@ public class FileMetric extends GenericMetric {
 	}
 
 	public String toJson() {
+		// map of common parameters for create/modify/delete that need be transferred over to the individual json object
 		Map<String, String> commonMap = new HashMap<String, String>();
+
+		// populate common parameters
 		commonMap.put("start_time", ProcessUtil.stripOptional(procInfo.startInstant().toString()));
 		commonMap.put("user", ProcessUtil.stripOptional(procInfo.user().toString()));
 		String commandLine = ProcessUtil.stripOptional(procInfo.command().toString());
@@ -62,6 +65,7 @@ public class FileMetric extends GenericMetric {
 		commonMap.put("file_name", fqFileName);
 		commonMap.put("element_type", "file_validate");
 
+		// build individual json objects and populate them with common data
 		JSONObject createObj = new JSONObject();
 		JSONObject modifyObj = new JSONObject();
 		JSONObject deleteObj = new JSONObject();
@@ -69,18 +73,22 @@ public class FileMetric extends GenericMetric {
 		addCommonToJson(modifyObj, commonMap);
 		addCommonToJson(deleteObj, commonMap);
 
+		// createObj individual settings
 		createObj.put("pid", pid);
 		createObj.put("activity_descriptor", "create");
 		createObj.put("status", this.createSuccess == true ? "pass" : "fail");
 
+		// modifyObj individual settings
 		modifyObj.put("pid", pid);
 		modifyObj.put("activity_descriptor", "modify");
 		modifyObj.put("status", this.modifySuccess == true ? "pass" : "fail");
 
+		// deleteObj individual settings
 		deleteObj.put("pid", pid);
 		deleteObj.put("activity_descriptor", "delete");
 		createObj.put("status", this.deleteSuccess == true ? "pass" : "fail");
 		
+		// return an unbound list 3 json hashes
 		return createObj.toString() + "," + modifyObj.toString() + "," + deleteObj.toString();
 	}
 
