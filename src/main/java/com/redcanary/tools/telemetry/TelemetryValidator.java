@@ -38,7 +38,7 @@ public class TelemetryValidator {
 			input = new FileInputStream(CONFIG_FILE);
 			prop.load(input);
 
-			// define instance variables
+			// set instance variables
 			this.mode = prop.getProperty("telemetry_validator.mode");
 			this.threadCount = Integer.parseInt(prop.getProperty("telemetry_validator.thread_count"));
 			
