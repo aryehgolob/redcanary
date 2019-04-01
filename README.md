@@ -70,21 +70,21 @@ private List<GenericMetric> metricList = new ArrayList<GenericMetric>();
 
 Notice that for a file instance, we can pass in some optional parameters.
 
-* Optional "dir" attribute
+* Optional: "dir" attribute for file to write to specific directory
 ```
 <file dir="C:/dev/redcanary" name="file2.txt">
 ```
 
-* Generate fixed size random data
+* Optional: generate fixed size random data instead of pre-defined data
 ```
 <text random="true" size_bytes="4000"/>
 ```
 
-If the data we are writing is unimportant, it "should" be random.
+**If the data we are writing is unimportant, it "should" be random.**
 
 * Args parameter for processes
 ```
-<text random="true" size_bytes="4000"/>
+<process name="ls" args="-altr"/>
 ```
 
 
