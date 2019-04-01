@@ -82,7 +82,7 @@ Notice that for a file instance, we can pass in some optional parameters.
 
 *If the data we are writing is unimportant, it "should" be random.*
 
-* Args parameter for processes
+* Optional: args parameter for processes
 ```
 <process name="ls" args="-altr"/>
 ```
